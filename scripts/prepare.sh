@@ -41,6 +41,6 @@ make -j -s
 
 echo "${red}compiling mfem...${reset}"
 cd $MFEM_DIR
-make config -s
-make all -j -s
+make parallel -j -l `nproc` -s
+make all -j -l `nproc` -s
 
