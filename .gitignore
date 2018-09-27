@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# ignore resources downloaded and extracted and compiled
+hypre-2.10.0b.tar.gz
+/hypre-2.10.0b
+/metis-4.0
+/mfem-3.4
