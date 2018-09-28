@@ -4,7 +4,7 @@ Utility to automate building the `mfem` library.
 
 # Building everything
 Downloads and builds mfem 3.4 and its dependencies:
-```
+```bash
 cd scripts
 ./prepare.sh
 ```
