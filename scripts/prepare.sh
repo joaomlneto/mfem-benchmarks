@@ -41,6 +41,9 @@ make -j -s
 
 echo "${red}compiling mfem...${reset}"
 cd $MFEM_DIR
+# configure mfem to use openmp
+cp $MFEM_DIR/config/defaults.mk $MFEM_DIR/config/user.mk
+sed -i 's/^MFEM_USE_OPENMP      = NO/MFEM_USE_OPENMP      = YES/g' $MFEM_DIR/config/user.mk
+sed -i 's/^MFEM_THREAD_SAFE     = NO/MFEM_THREAD_SAFE     = YES/g' $MFEM_DIR/config/user.mk
 make parallel -j -l `nproc` -s
 make all -j -l `nproc` -s
-
