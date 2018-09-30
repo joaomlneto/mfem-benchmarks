@@ -8,6 +8,10 @@ HYPRE_DIR=$ROOT/hypre-2.10.0b
 METIS_DIR=$ROOT/metis-4.0
 MFEM_DIR=$ROOT/mfem-3.4
 
+# remove previous folders if they exist
+echo "${red}removing previous versions${reset}"
+rm -rf $HYPRE_DIR $METIS_DIR $MFEM_DIR
+
 # go back to the root of the repository
 cd ..
 
@@ -43,7 +47,7 @@ echo "${red}compiling mfem...${reset}"
 cd $MFEM_DIR
 # configure mfem to use openmp
 cp $MFEM_DIR/config/defaults.mk $MFEM_DIR/config/user.mk
-sed -i 's/^MFEM_USE_OPENMP      = NO/MFEM_USE_OPENMP      = YES/g' $MFEM_DIR/config/user.mk
-sed -i 's/^MFEM_THREAD_SAFE     = NO/MFEM_THREAD_SAFE     = YES/g' $MFEM_DIR/config/user.mk
-make parallel -j -l `nproc` -s
-make all -j -l `nproc` -s
+make config MFEM_USE_MPI=NO MFEM_DEBUG=NO MFEM_USE_OPENMP=YES MFEM_THREAD_SAFE=YES
+make status
+make all -j 16 -s
+make status
