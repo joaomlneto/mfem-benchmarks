@@ -36,7 +36,7 @@ rm -f v3.4.tar.gz
 
 echo "${red}compiling hypre...${reset}"
 cd $HYPRE_DIR/src
-./configure > /dev/null
+./configure --with-openmp > /dev/null
 make install -j -s
 
 echo "${red}compiling metis...${reset}"
