@@ -49,5 +49,6 @@ cd $MFEM_DIR
 cp $MFEM_DIR/config/defaults.mk $MFEM_DIR/config/user.mk
 make config MFEM_USE_MPI=NO MFEM_DEBUG=NO MFEM_USE_OPENMP=YES MFEM_THREAD_SAFE=YES
 make status
-make all -j 16 -s
+make parallel -j -s
+make all -j -s
 make status
